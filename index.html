@@ -146,54 +146,71 @@
         <!-- Вкладка 1: ДАШБОРД (ГЛАВНАЯ) -->
         <section id="tab-dashboard" class="tab-content space-y-6">
             
-            <!-- Карточки баланса и статистики -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <!-- Общий баланс -->
-                <div class="glass-panel p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between h-[150px]">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-500/10 rounded-full blur-2xl pointer-events-none"></div>
+            <!-- Карточки баланса и статистики (4 колонки для детализации кредитов) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Личные средства -->
+                <div class="glass-panel p-5 rounded-2xl relative overflow-hidden flex flex-col justify-between h-[150px]">
+                    <div class="absolute top-0 right-0 w-28 h-28 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
                     <div class="flex justify-between items-start">
-                        <span class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Общий капитал</span>
-                        <div class="p-2 bg-brand-500/10 rounded-xl text-brand-400 border border-brand-500/20">
-                            <i data-lucide="piggy-bank" class="w-5 h-5"></i>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Личные средства</span>
+                        <div class="p-1.5 bg-emerald-500/10 rounded-lg text-emerald-400 border border-emerald-500/20">
+                            <i data-lucide="wallet" class="w-4.5 h-4.5"></i>
                         </div>
                     </div>
                     <div>
-                        <h2 id="total-balance" class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-1">0,00 ₽</h2>
-                        <p class="text-[11px] text-brand-400 flex items-center gap-1">
-                            <i data-lucide="activity" class="w-3 h-3"></i> Активные средства на счетах
+                        <h2 id="total-own-balance" class="text-xl sm:text-2xl font-extrabold tracking-tight text-white mb-0.5">0,00 ₽</h2>
+                        <p class="text-[10px] text-emerald-400 flex items-center gap-1">
+                            <i data-lucide="shield-check" class="w-3 h-3"></i> Собственный капитал
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Кредитные средства -->
+                <div class="glass-panel p-5 rounded-2xl relative overflow-hidden flex flex-col justify-between h-[150px]">
+                    <div class="absolute top-0 right-0 w-28 h-28 bg-rose-500/10 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="flex justify-between items-start">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Кредитные средства</span>
+                        <div class="p-1.5 bg-rose-500/10 rounded-lg text-rose-400 border border-rose-500/20">
+                            <i data-lucide="credit-card" class="w-4.5 h-4.5"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 id="total-credit-balance" class="text-xl sm:text-2xl font-extrabold tracking-tight text-white mb-0.5">0,00 ₽</h2>
+                        <p id="total-credit-subtitle" class="text-[10px] text-rose-400 flex items-center gap-1">
+                            <i data-lucide="alert-triangle" class="w-3 h-3"></i> Заемный лимит и долги
                         </p>
                     </div>
                 </div>
 
                 <!-- Доходы за месяц -->
-                <div class="glass-panel p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between h-[150px]">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="glass-panel p-5 rounded-2xl relative overflow-hidden flex flex-col justify-between h-[150px]">
+                    <div class="absolute top-0 right-0 w-28 h-28 bg-brand-500/10 rounded-full blur-2xl pointer-events-none"></div>
                     <div class="flex justify-between items-start">
-                        <span class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Доходы (текущий месяц)</span>
-                        <div class="p-2 bg-emerald-500/10 rounded-xl text-emerald-400 border border-emerald-500/20">
-                            <i data-lucide="trending-up" class="w-5 h-5"></i>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Доходы (месяц)</span>
+                        <div class="p-1.5 bg-brand-500/10 rounded-lg text-brand-400 border border-brand-500/20">
+                            <i data-lucide="trending-up" class="w-4.5 h-4.5"></i>
                         </div>
                     </div>
                     <div>
-                        <h2 id="total-income" class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-1">0,00 ₽</h2>
-                        <p class="text-[11px] text-emerald-400 flex items-center gap-1">
-                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i> Поступления и заработок
+                        <h2 id="total-income" class="text-xl sm:text-2xl font-extrabold tracking-tight text-white mb-0.5">0,00 ₽</h2>
+                        <p class="text-[10px] text-brand-400 flex items-center gap-1">
+                            <i data-lucide="arrow-up-right" class="w-3 h-3"></i> Поступления и заработок
                         </p>
                     </div>
                 </div>
 
                 <!-- Расходы за месяц -->
-                <div class="glass-panel p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between h-[150px]">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-rose-500/10 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="glass-panel p-5 rounded-2xl relative overflow-hidden flex flex-col justify-between h-[150px]">
+                    <div class="absolute top-0 right-0 w-28 h-28 bg-orange-500/10 rounded-full blur-2xl pointer-events-none"></div>
                     <div class="flex justify-between items-start">
-                        <span class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Расходы (текущий месяц)</span>
-                        <div class="p-2 bg-rose-500/10 rounded-xl text-rose-400 border border-rose-500/20">
-                            <i data-lucide="trending-down" class="w-5 h-5"></i>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Расходы (месяц)</span>
+                        <div class="p-1.5 bg-orange-500/10 rounded-lg text-orange-400 border border-orange-500/20">
+                            <i data-lucide="trending-down" class="w-4.5 h-4.5"></i>
                         </div>
                     </div>
                     <div>
-                        <h2 id="total-expense" class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-1">0,00 ₽</h2>
-                        <p class="text-[11px] text-rose-400 flex items-center gap-1">
+                        <h2 id="total-expense" class="text-xl sm:text-2xl font-extrabold tracking-tight text-white mb-0.5">0,00 ₽</h2>
+                        <p class="text-[10px] text-orange-400 flex items-center gap-1">
                             <i data-lucide="arrow-down-left" class="w-3.5 h-3.5"></i> Траты за этот месяц
                         </p>
                     </div>
@@ -202,7 +219,7 @@
 
             <!-- Раздел со счетами и графиком -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Счета мини-панель -->
+                <!-- Счета мини-панель (с разделением по типам) -->
                 <div class="glass-panel p-6 rounded-2xl space-y-4 lg:col-span-1">
                     <div class="flex justify-between items-center">
                         <h3 class="font-bold text-lg text-white">Мои счета</h3>
@@ -210,8 +227,23 @@
                             Все счета <i data-lucide="chevron-right" class="w-4 h-4"></i>
                         </button>
                     </div>
-                    <div id="dashboard-accounts" class="space-y-3 max-h-[300px] overflow-y-auto pr-1">
-                        <!-- Сюда вставляются счета динамически -->
+                    
+                    <div class="space-y-4 max-h-[350px] overflow-y-auto pr-1">
+                        <!-- Дебетовые счета -->
+                        <div class="space-y-2">
+                            <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Личные средства</p>
+                            <div id="dashboard-accounts-debit" class="space-y-2">
+                                <!-- Динамически -->
+                            </div>
+                        </div>
+
+                        <!-- Кредитные счета -->
+                        <div class="space-y-2 pt-2 border-t border-slate-800/40">
+                            <p class="text-[10px] font-bold text-rose-400/80 uppercase tracking-wider">Кредиты и заемные</p>
+                            <div id="dashboard-accounts-credit" class="space-y-2">
+                                <!-- Динамически -->
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -318,20 +350,35 @@
         </section>
 
         <!-- Вкладка 3: МОИ СЧЕТА -->
-        <section id="tab-accounts" class="tab-content space-y-6 hidden">
+        <section id="tab-accounts" class="tab-content space-y-8 hidden">
             <div class="flex justify-between items-center">
                 <div>
                     <h2 class="text-2xl font-extrabold text-white">Мои Счета</h2>
-                    <p class="text-xs text-slate-400">Управляйте своими кошельками, картами и сейфами</p>
+                    <p class="text-xs text-slate-400">Управляйте своими кошельками, картами, кредитами и заемными лимитами</p>
                 </div>
                 <button onclick="openAccountModal()" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-white px-4 py-2 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all">
                     <i data-lucide="plus" class="w-4.5 h-4.5 text-brand-500"></i> Создать счёт
                 </button>
             </div>
 
-            <!-- Сетка счетов -->
-            <div id="accounts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Карточки счетов будут рендериться здесь -->
+            <!-- Сетка дебетовых счетов -->
+            <div class="space-y-4">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Личные и дебетовые средства
+                </h3>
+                <div id="accounts-grid-debit" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Заполняется динамически -->
+                </div>
+            </div>
+
+            <!-- Сетка кредитных счетов -->
+            <div class="space-y-4 pt-4 border-t border-slate-900">
+                <h3 class="text-xs font-bold text-rose-400 uppercase tracking-wider flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-rose-500"></span> Кредитные карты и кредиты (Обязательства)
+                </h3>
+                <div id="accounts-grid-credit" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Заполняется динамически -->
+                </div>
             </div>
         </section>
 
@@ -535,28 +582,55 @@
                     <label for="acc-name" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Название счёта</label>
                     <input type="text" id="acc-name" placeholder="Напр. Сбербанк, Наличные" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500" required>
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Цветовая тема</label>
-                    <div class="grid grid-cols-6 gap-2">
-                        <button onclick="setAccountColor('indigo')" class="acc-color-btn w-10 h-10 rounded-xl bg-indigo-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all"></button>
-                        <button onclick="setAccountColor('emerald')" class="acc-color-btn w-10 h-10 rounded-xl bg-emerald-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all"></button>
-                        <button onclick="setAccountColor('amber')" class="acc-color-btn w-10 h-10 rounded-xl bg-amber-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all"></button>
-                        <button onclick="setAccountColor('rose')" class="acc-color-btn w-10 h-10 rounded-xl bg-rose-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all"></button>
-                        <button onclick="setAccountColor('sky')" class="acc-color-btn w-10 h-10 rounded-xl bg-sky-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all"></button>
-                        <button onclick="setAccountColor('purple')" class="acc-color-btn w-10 h-10 rounded-xl bg-purple-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all"></button>
+
+                <!-- Дополнительное поле: Кредитный статус счета -->
+                <div class="flex items-center justify-between p-3 bg-slate-950/60 border border-slate-800 rounded-xl">
+                    <div>
+                        <label for="acc-is-credit" class="block text-xs font-semibold text-slate-200">Кредитный счёт</label>
+                        <span class="text-[9px] text-slate-500">Кредитная карта, рассрочка или долг</span>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="acc-is-credit" class="w-4 h-4 rounded text-brand-600 bg-slate-900 border-slate-800 focus:ring-brand-500 focus:ring-offset-slate-950">
                     </div>
                 </div>
+
                 <div>
-                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Иконка счёта</label>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Цветовая тема (12 оттенков)</label>
+                    <div class="grid grid-cols-6 gap-2" id="acc-colors-selector">
+                        <button onclick="setAccountColor('indigo')" class="acc-color-btn w-10 h-10 rounded-xl bg-indigo-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all" data-color="indigo"></button>
+                        <button onclick="setAccountColor('emerald')" class="acc-color-btn w-10 h-10 rounded-xl bg-emerald-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all" data-color="emerald"></button>
+                        <button onclick="setAccountColor('amber')" class="acc-color-btn w-10 h-10 rounded-xl bg-amber-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all" data-color="amber"></button>
+                        <button onclick="setAccountColor('rose')" class="acc-color-btn w-10 h-10 rounded-xl bg-rose-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all" data-color="rose"></button>
+                        <button onclick="setAccountColor('sky')" class="acc-color-btn w-10 h-10 rounded-xl bg-sky-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all" data-color="sky"></button>
+                        <button onclick="setAccountColor('purple')" class="acc-color-btn w-10 h-10 rounded-xl bg-purple-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all" data-color="purple"></button>
+                        <button onclick="setAccountColor('teal')" class="acc-color-btn w-10 h-10 rounded-xl bg-teal-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all" data-color="teal"></button>
+                        <button onclick="setAccountColor('pink')" class="acc-color-btn w-10 h-10 rounded-xl bg-pink-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all" data-color="pink"></button>
+                        <button onclick="setAccountColor('orange')" class="acc-color-btn w-10 h-10 rounded-xl bg-orange-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all" data-color="orange"></button>
+                        <button onclick="setAccountColor('cyan')" class="acc-color-btn w-10 h-10 rounded-xl bg-cyan-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all" data-color="cyan"></button>
+                        <button onclick="setAccountColor('lime')" class="acc-color-btn w-10 h-10 rounded-xl bg-lime-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all" data-color="lime"></button>
+                        <button onclick="setAccountColor('red')" class="acc-color-btn w-10 h-10 rounded-xl bg-red-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all" data-color="red"></button>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Иконка счёта (12 вариантов)</label>
                     <div class="grid grid-cols-6 gap-2" id="acc-icons-selector">
-                        <button onclick="setAccountIcon('credit-card')" class="acc-icon-btn p-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-brand-500 transition-colors" data-icon="credit-card"><i data-lucide="credit-card" class="w-5 h-5 mx-auto text-slate-300"></i></button>
+                        <button onclick="setAccountIcon('credit-card')" class="acc-icon-btn p-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-brand-500 transition-colors animate-all" data-icon="credit-card"><i data-lucide="credit-card" class="w-5 h-5 mx-auto text-slate-300"></i></button>
                         <button onclick="setAccountIcon('wallet')" class="acc-icon-btn p-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-brand-500 transition-colors" data-icon="wallet"><i data-lucide="wallet" class="w-5 h-5 mx-auto text-slate-300"></i></button>
                         <button onclick="setAccountIcon('piggy-bank')" class="acc-icon-btn p-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-brand-500 transition-colors" data-icon="piggy-bank"><i data-lucide="piggy-bank" class="w-5 h-5 mx-auto text-slate-300"></i></button>
                         <button onclick="setAccountIcon('coins')" class="acc-icon-btn p-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-brand-500 transition-colors" data-icon="coins"><i data-lucide="coins" class="w-5 h-5 mx-auto text-slate-300"></i></button>
                         <button onclick="setAccountIcon('landmark')" class="acc-icon-btn p-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-brand-500 transition-colors" data-icon="landmark"><i data-lucide="landmark" class="w-5 h-5 mx-auto text-slate-300"></i></button>
                         <button onclick="setAccountIcon('gem')" class="acc-icon-btn p-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-brand-500 transition-colors" data-icon="gem"><i data-lucide="gem" class="w-5 h-5 mx-auto text-slate-300"></i></button>
+                        <!-- Новые иконки -->
+                        <button onclick="setAccountIcon('briefcase')" class="acc-icon-btn p-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-brand-500 transition-colors" data-icon="briefcase"><i data-lucide="briefcase" class="w-5 h-5 mx-auto text-slate-300"></i></button>
+                        <button onclick="setAccountIcon('banknote')" class="acc-icon-btn p-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-brand-500 transition-colors" data-icon="banknote"><i data-lucide="banknote" class="w-5 h-5 mx-auto text-slate-300"></i></button>
+                        <button onclick="setAccountIcon('shield')" class="acc-icon-btn p-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-brand-500 transition-colors" data-icon="shield"><i data-lucide="shield" class="w-5 h-5 mx-auto text-slate-300"></i></button>
+                        <button onclick="setAccountIcon('gift')" class="acc-icon-btn p-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-brand-500 transition-colors" data-icon="gift"><i data-lucide="gift" class="w-5 h-5 mx-auto text-slate-300"></i></button>
+                        <button onclick="setAccountIcon('shopping-bag')" class="acc-icon-btn p-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-brand-500 transition-colors" data-icon="shopping-bag"><i data-lucide="shopping-bag" class="w-5 h-5 mx-auto text-slate-300"></i></button>
+                        <button onclick="setAccountIcon('globe')" class="acc-icon-btn p-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-brand-500 transition-colors" data-icon="globe"><i data-lucide="globe" class="w-5 h-5 mx-auto text-slate-300"></i></button>
                     </div>
                 </div>
+
                 <div>
                     <label for="acc-balance" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Стартовый баланс (₽)</label>
                     <input type="number" id="acc-balance" placeholder="0" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
@@ -613,12 +687,12 @@
                 <div>
                     <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Цвет категории</label>
                     <div class="grid grid-cols-6 gap-2">
-                        <button onclick="setCategoryColor('rose')" class="cat-color-btn w-8 h-8 rounded-lg bg-rose-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all"></button>
-                        <button onclick="setCategoryColor('amber')" class="cat-color-btn w-8 h-8 rounded-lg bg-amber-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all"></button>
-                        <button onclick="setCategoryColor('emerald')" class="cat-color-btn w-8 h-8 rounded-lg bg-emerald-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all"></button>
-                        <button onclick="setCategoryColor('sky')" class="cat-color-btn w-8 h-8 rounded-lg bg-sky-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all"></button>
-                        <button onclick="setCategoryColor('violet')" class="cat-color-btn w-8 h-8 rounded-lg bg-violet-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all"></button>
-                        <button onclick="setCategoryColor('pink')" class="cat-color-btn w-8 h-8 rounded-lg bg-pink-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all"></button>
+                        <button onclick="setCategoryColor('rose')" class="cat-color-btn w-8 h-8 rounded-lg bg-rose-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all" data-color="rose"></button>
+                        <button onclick="setCategoryColor('amber')" class="cat-color-btn w-8 h-8 rounded-lg bg-amber-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all" data-color="amber"></button>
+                        <button onclick="setCategoryColor('emerald')" class="cat-color-btn w-8 h-8 rounded-lg bg-emerald-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all" data-color="emerald"></button>
+                        <button onclick="setCategoryColor('sky')" class="cat-color-btn w-8 h-8 rounded-lg bg-sky-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all" data-color="sky"></button>
+                        <button onclick="setCategoryColor('violet')" class="cat-color-btn w-8 h-8 rounded-lg bg-violet-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all" data-color="violet"></button>
+                        <button onclick="setCategoryColor('pink')" class="cat-color-btn w-8 h-8 rounded-lg bg-pink-500 border-2 border-transparent ring-offset-2 ring-offset-slate-950 transition-all" data-color="pink"></button>
                     </div>
                 </div>
                 <div>
@@ -671,9 +745,11 @@
         // Изначальный премиальный шаблон готовых категорий и счетов
         const DEFAULT_DATA = {
             accounts: [
-                { id: 'acc-1', name: 'Наличные', balance: 5000, color: 'emerald', icon: 'wallet' },
-                { id: 'acc-2', name: 'Сбербанк', balance: 45000, color: 'indigo', icon: 'credit-card' },
-                { id: 'acc-3', name: 'Накопительный', balance: 150000, color: 'amber', icon: 'piggy-bank' }
+                { id: 'acc-1', name: 'Наличные', balance: 5000, color: 'emerald', icon: 'wallet', isCredit: false },
+                { id: 'acc-2', name: 'Сбербанк', balance: 45000, color: 'indigo', icon: 'credit-card', isCredit: false },
+                { id: 'acc-3', name: 'Накопительный', balance: 150000, color: 'amber', icon: 'piggy-bank', isCredit: false },
+                // Демонстрационный кредитный счет
+                { id: 'acc-4', name: 'Кредитка Тинькофф', balance: 50000, color: 'red', icon: 'credit-card', isCredit: true }
             ],
             categories: [
                 // Расходы
@@ -700,7 +776,9 @@
                 { id: 'tx-1', type: 'income', amount: 80000, fromAccountId: 'acc-2', category: 'Зарплата', date: getTodayDateString(), note: 'Аванс и премия' },
                 { id: 'tx-2', type: 'expense', amount: 3500, fromAccountId: 'acc-2', category: 'Продукты', date: getTodayDateString(), note: 'Супермаркет' },
                 { id: 'tx-3', type: 'expense', amount: 890, fromAccountId: 'acc-1', category: 'Кафе и рестораны', date: getTodayDateString(), note: 'Обед' },
-                { id: 'tx-4', type: 'transfer', amount: 15000, fromAccountId: 'acc-2', toAccountId: 'acc-3', date: getTodayDateString(), note: 'Перевод в сбережения' }
+                { id: 'tx-4', type: 'transfer', amount: 15000, fromAccountId: 'acc-2', toAccountId: 'acc-3', date: getTodayDateString(), note: 'Перевод в сбережения' },
+                // Расход с кредитной карты для примера
+                { id: 'tx-5', type: 'expense', amount: 8000, fromAccountId: 'acc-4', category: 'Развлечения', date: getTodayDateString(), note: 'Концерт' }
             ]
         };
 
@@ -716,9 +794,6 @@
         let selectedCatType = 'expense';
         let selectedCatColor = 'rose';
         let selectedCatIcon = 'shopping-cart';
-
-        // Очередь для кастомного подтверждения (Custom Confirm)
-        let confirmPromiseResolver = null;
 
         // ==================== ИНИЦИАЛИЗАЦИЯ И СТАРТ ====================
         window.addEventListener('DOMContentLoaded', () => {
@@ -745,9 +820,10 @@
                 const raw = localStorage.getItem(APP_STORAGE_KEY);
                 if (raw) {
                     appData = JSON.parse(raw);
-                    // Проверяем, есть ли иконки в старых счетах (для совместимости)
+                    // Проверяем, есть ли иконки и кредитный флаг в счетах (для совместимости)
                     appData.accounts.forEach(acc => {
                         if (!acc.icon) acc.icon = 'credit-card';
+                        if (acc.isCredit === undefined) acc.isCredit = false;
                     });
                 } else {
                     appData = JSON.parse(JSON.stringify(DEFAULT_DATA));
@@ -899,9 +975,16 @@
         // ==================== РЕНДЕРИНГ ЭЛЕМЕНТОВ ДАШБОРДА ====================
         function renderDashboard() {
             // Вычисляем глобальные показатели
-            let totalCapital = 0;
+            let totalOwnCapital = 0;   // Баланс дебетовых счетов
+            let totalCreditBalance = 0; // Баланс кредитных счетов
+
             appData.accounts.forEach(acc => {
-                totalCapital += getAccountBalance(acc);
+                const bal = getAccountBalance(acc);
+                if (acc.isCredit) {
+                    totalCreditBalance += bal;
+                } else {
+                    totalOwnCapital += bal;
+                }
             });
 
             // Доходы и расходы за ТЕКУЩИЙ МЕСЯЦ
@@ -920,42 +1003,78 @@
                 }
             });
 
-            document.getElementById('total-balance').textContent = formatCurrency(totalCapital);
+            // Запись данных в карточки баланса
+            document.getElementById('total-own-balance').textContent = formatCurrency(totalOwnCapital);
+            document.getElementById('total-credit-balance').textContent = formatCurrency(totalCreditBalance);
             document.getElementById('total-income').textContent = formatCurrency(monthlyIncome);
             document.getElementById('total-expense').textContent = formatCurrency(monthlyExpense);
 
-            // Отрисовка счетов на главной
-            const accountsListEl = document.getElementById('dashboard-accounts');
-            accountsListEl.innerHTML = '';
+            // Визуальное изменение статуса кредитного лимита (если в минусе, подсвечиваем долг)
+            const creditSubtitle = document.getElementById('total-credit-subtitle');
+            if (totalCreditBalance < 0) {
+                creditSubtitle.innerHTML = `<i data-lucide="alert-triangle" class="w-3 h-3"></i> Имеется задолженность`;
+                creditSubtitle.className = "text-[10px] text-rose-400 flex items-center gap-1 font-bold";
+            } else {
+                creditSubtitle.innerHTML = `<i data-lucide="shield-check" class="w-3 h-3"></i> Свободный лимит`;
+                creditSubtitle.className = "text-[10px] text-slate-400 flex items-center gap-1";
+            }
+
+            // Рендеринг счетов в боковой панели с делением на Дебетовые и Кредитные
+            const debitListEl = document.getElementById('dashboard-accounts-debit');
+            const creditListEl = document.getElementById('dashboard-accounts-credit');
+            debitListEl.innerHTML = '';
+            creditListEl.innerHTML = '';
             
+            let debitCount = 0;
+            let creditCount = 0;
+
+            // Карта премиальных цветов для стильных элементов списка
+            const colorMap = {
+                indigo: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
+                emerald: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+                amber: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+                rose: 'bg-rose-500/10 text-rose-400 border-rose-500/20',
+                sky: 'bg-sky-500/10 text-sky-400 border-sky-500/20',
+                purple: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
+                teal: 'bg-teal-500/10 text-teal-400 border-teal-500/20',
+                pink: 'bg-pink-500/10 text-pink-400 border-pink-500/20',
+                orange: 'bg-orange-500/10 text-orange-400 border-orange-500/20',
+                cyan: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
+                lime: 'bg-lime-500/10 text-lime-400 border-lime-500/20',
+                red: 'bg-red-500/10 text-red-400 border-red-500/20'
+            };
+
             appData.accounts.forEach(acc => {
                 const actBal = getAccountBalance(acc);
-                const colorMap = {
-                    indigo: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
-                    emerald: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
-                    amber: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
-                    rose: 'bg-rose-500/10 text-rose-400 border-rose-500/20',
-                    sky: 'bg-sky-500/10 text-sky-400 border-sky-500/20',
-                    purple: 'bg-purple-500/10 text-purple-400 border-purple-500/20'
-                };
                 const colorClass = colorMap[acc.color] || colorMap.indigo;
                 const accIcon = acc.icon || 'credit-card';
 
-                accountsListEl.innerHTML += `
+                const html = `
                     <div class="flex items-center justify-between p-3 rounded-xl bg-slate-900/40 border border-slate-800/60 hover:bg-slate-900/80 transition-all duration-150">
                         <div class="flex items-center gap-3">
                             <div class="p-1.5 rounded-lg ${colorClass}">
                                 <i data-lucide="${escapeHTML(accIcon)}" class="w-4 h-4"></i>
                             </div>
-                            <span class="text-sm font-semibold text-white">${escapeHTML(acc.name)}</span>
+                            <span class="text-xs font-semibold text-white truncate max-w-[120px]">${escapeHTML(acc.name)}</span>
                         </div>
-                        <span class="text-sm font-bold text-slate-100">${formatCurrency(actBal)}</span>
+                        <span class="text-xs font-bold ${acc.isCredit && actBal < 0 ? 'text-rose-400' : 'text-slate-100'}">${formatCurrency(actBal)}</span>
                     </div>
                 `;
+
+                if (acc.isCredit) {
+                    creditListEl.innerHTML += html;
+                    creditCount++;
+                } else {
+                    debitListEl.innerHTML += html;
+                    debitCount++;
+                }
             });
 
-            if (appData.accounts.length === 0) {
-                accountsListEl.innerHTML = `<p class="text-xs text-slate-500 text-center py-4">Нет созданных счетов</p>`;
+            if (debitCount === 0) {
+                debitListEl.innerHTML = `<p class="text-[11px] text-slate-500 text-center py-2">Счетов личных средств нет</p>`;
+            }
+            if (creditCount === 0) {
+                creditListEl.innerHTML = `<p class="text-[11px] text-slate-500 text-center py-2">Кредитных счетов нет</p>`;
             }
 
             // Отрисовка последних транзакций на главной (только 4 штуки)
@@ -1058,8 +1177,8 @@
 
             // Набор премиальных контрастных цветов для графика
             const chartColors = [
-                '#f43f5e', '#f59e0b', '#10b981', '#0ea5e9', '#8b5cf6', 
-                '#ec4899', '#6366f1', '#14b8a6', '#f97316', '#a855f7'
+                '#6366f1', '#10b981', '#f59e0b', '#f43f5e', '#0ea5e9', 
+                '#8b5cf6', '#14b8a6', '#ec4899', '#f97316', '#06b6d4'
             ];
 
             chartInstance = new Chart(ctx, {
@@ -1223,14 +1342,21 @@
 
         // ==================== СЧЕТА (УПРАВЛЕНИЕ) ====================
         function renderAccounts() {
-            const grid = document.getElementById('accounts-grid');
-            grid.innerHTML = '';
+            const debitGrid = document.getElementById('accounts-grid-debit');
+            const creditGrid = document.getElementById('accounts-grid-credit');
+            debitGrid.innerHTML = '';
+            creditGrid.innerHTML = '';
+
+            let debitCount = 0;
+            let creditCount = 0;
 
             appData.accounts.forEach(acc => {
                 const bal = getAccountBalance(acc);
                 const colorHex = {
                     indigo: '#6366f1', emerald: '#10b981', amber: '#f59e0b',
-                    rose: '#f43f5e', sky: '#0ea5e9', purple: '#8b5cf6'
+                    rose: '#f43f5e', sky: '#0ea5e9', purple: '#8b5cf6',
+                    teal: '#14b8a6', pink: '#ec4899', orange: '#f97316',
+                    cyan: '#06b6d4', lime: '#84cc16', red: '#ef4444'
                 }[acc.color] || '#6366f1';
                 
                 const colorBgMap = {
@@ -1239,12 +1365,18 @@
                     amber: 'bg-amber-500/10 text-amber-400',
                     rose: 'bg-rose-500/10 text-rose-400',
                     sky: 'bg-sky-500/10 text-sky-400',
-                    purple: 'bg-purple-500/10 text-purple-400'
+                    purple: 'bg-purple-500/10 text-purple-400',
+                    teal: 'bg-teal-500/10 text-teal-400',
+                    pink: 'bg-pink-500/10 text-pink-400',
+                    orange: 'bg-orange-500/10 text-orange-400',
+                    cyan: 'bg-cyan-500/10 text-cyan-400',
+                    lime: 'bg-lime-500/10 text-lime-400',
+                    red: 'bg-red-500/10 text-red-400'
                 };
                 const iconClass = colorBgMap[acc.color] || colorBgMap.indigo;
                 const accIcon = acc.icon || 'credit-card';
 
-                grid.innerHTML += `
+                const cardHtml = `
                     <div class="glass-panel p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between h-[180px] interactive-scale border border-slate-800/80">
                         <div class="absolute top-0 right-0 w-36 h-36 rounded-full blur-3xl pointer-events-none opacity-25" style="background-color: ${colorHex}"></div>
                         <div class="flex justify-between items-start z-10">
@@ -1254,7 +1386,7 @@
                                 </div>
                                 <div>
                                     <h3 class="font-bold text-base text-white leading-tight">${escapeHTML(acc.name)}</h3>
-                                    <p class="text-[9px] text-slate-500 font-bold uppercase tracking-widest mt-0.5">Активный Счёт</p>
+                                    <p class="text-[9px] text-slate-500 font-bold uppercase tracking-widest mt-0.5">${acc.isCredit ? 'Кредитный Счёт' : 'Дебетовый Счёт'}</p>
                                 </div>
                             </div>
                             <div class="flex gap-1 bg-slate-950/40 p-1 rounded-xl border border-slate-800/50">
@@ -1267,21 +1399,33 @@
                             </div>
                         </div>
                         <div class="z-10 mt-4">
-                            <p class="text-xs text-slate-400 font-semibold mb-1">Доступно средств</p>
-                            <h2 class="text-2xl font-black text-white tracking-tight">${formatCurrency(bal)}</h2>
+                            <p class="text-xs text-slate-400 font-semibold mb-1">${acc.isCredit && bal < 0 ? 'Кредитный Долг' : 'Доступно средств'}</p>
+                            <h2 class="text-2xl font-black text-white tracking-tight ${acc.isCredit && bal < 0 ? 'text-rose-400' : ''}">${formatCurrency(bal)}</h2>
                         </div>
                     </div>
                 `;
+
+                if (acc.isCredit) {
+                    creditGrid.innerHTML += cardHtml;
+                    creditCount++;
+                } else {
+                    debitGrid.innerHTML += cardHtml;
+                    debitCount++;
+                }
             });
 
-            if (appData.accounts.length === 0) {
-                grid.innerHTML = `
-                    <div class="col-span-full py-16 text-center text-slate-400 space-y-3">
-                        <div class="w-16 h-16 bg-slate-900 rounded-full flex items-center justify-center mx-auto text-slate-600">
-                            <i data-lucide="credit-card" class="w-8 h-8"></i>
-                        </div>
-                        <p class="text-base font-semibold">У вас нет созданных счетов</p>
-                        <p class="text-xs max-w-xs mx-auto text-slate-500">Создайте счёт, чтобы добавлять расходы и доходы в систему.</p>
+            // Заглушки пустых категорий
+            if (debitCount === 0) {
+                debitGrid.innerHTML = `
+                    <div class="col-span-full py-8 text-center text-slate-500">
+                        Личные счета отсутствуют.
+                    </div>
+                `;
+            }
+            if (creditCount === 0) {
+                creditGrid.innerHTML = `
+                    <div class="col-span-full py-8 text-center text-slate-500">
+                        Кредитные счета не созданы.
                     </div>
                 `;
             }
@@ -1427,8 +1571,10 @@
             selectCategory.innerHTML = '';
 
             appData.accounts.forEach(acc => {
-                selectFrom.innerHTML += `<option value="${acc.id}">${escapeHTML(acc.name)}</option>`;
-                selectTo.innerHTML += `<option value="${acc.id}">${escapeHTML(acc.name)}</option>`;
+                // Если счет кредитный, добавляем визуальную метку
+                const suffix = acc.isCredit ? ' [Кредитный]' : '';
+                selectFrom.innerHTML += `<option value="${acc.id}">${escapeHTML(acc.name)}${suffix}</option>`;
+                selectTo.innerHTML += `<option value="${acc.id}">${escapeHTML(acc.name)}${suffix}</option>`;
             });
 
             const filteredCats = appData.categories.filter(c => c.type === currentTxType);
@@ -1462,15 +1608,18 @@
                 return;
             }
 
+            // Для дебетовых счетов выводим предупреждение при уходе в минус
             if (currentTxType === 'expense') {
                 const acc = appData.accounts.find(a => a.id === fromAccId);
-                const bal = getAccountBalance(acc);
-                if (bal < amount) {
-                    const confirmRes = await showCustomConfirm(
-                        "Отрицательный баланс",
-                        `Баланс счёта уйдёт в минус (баланс: ${bal} ₽, расход: ${amount} ₽). Всё равно продолжить?`
-                    );
-                    if (!confirmRes) return;
+                if (!acc.isCredit) {
+                    const bal = getAccountBalance(acc);
+                    if (bal < amount) {
+                        const confirmRes = await showCustomConfirm(
+                            "Отрицательный баланс",
+                            `Баланс счёта уйдёт в минус (баланс: ${bal} ₽, расход: ${amount} ₽). Всё равно продолжить?`
+                        );
+                        if (!confirmRes) return;
+                    }
                 }
             }
 
@@ -1512,6 +1661,7 @@
                 
                 document.getElementById('acc-name').value = acc.name;
                 document.getElementById('acc-balance').value = acc.balance;
+                document.getElementById('acc-is-credit').checked = acc.isCredit || false;
                 setAccountColor(acc.color || 'indigo');
                 setAccountIcon(acc.icon || 'credit-card');
             } else {
@@ -1522,6 +1672,7 @@
                 
                 document.getElementById('acc-name').value = '';
                 document.getElementById('acc-balance').value = '';
+                document.getElementById('acc-is-credit').checked = false;
                 setAccountColor('indigo');
                 setAccountIcon('credit-card');
             }
@@ -1540,10 +1691,7 @@
                 btn.style.borderColor = 'transparent';
                 btn.style.transform = 'scale(1)';
             });
-            const colors = {
-                indigo: 0, emerald: 1, amber: 2, rose: 3, sky: 4, purple: 5
-            };
-            const btn = document.querySelectorAll('.acc-color-btn')[colors[color]];
+            const btn = document.querySelector(`.acc-color-btn[data-color="${color}"]`);
             if (btn) {
                 btn.style.borderColor = '#ffffff';
                 btn.style.transform = 'scale(1.1)';
@@ -1566,6 +1714,7 @@
         function saveAccount() {
             const name = document.getElementById('acc-name').value.trim();
             const startBal = parseFloat(document.getElementById('acc-balance').value) || 0;
+            const isCredit = document.getElementById('acc-is-credit').checked;
 
             if (!name) {
                 showToast("Пожалуйста, заполните название счёта", false);
@@ -1580,6 +1729,7 @@
                     appData.accounts[accIndex].balance = startBal;
                     appData.accounts[accIndex].color = selectedAccColor;
                     appData.accounts[accIndex].icon = selectedAccIcon;
+                    appData.accounts[accIndex].isCredit = isCredit;
                     showToast("Счёт успешно обновлён");
                 }
             } else {
@@ -1589,7 +1739,8 @@
                     name: name,
                     balance: startBal,
                     color: selectedAccColor,
-                    icon: selectedAccIcon
+                    icon: selectedAccIcon,
+                    isCredit: isCredit
                 };
                 appData.accounts.push(newAcc);
                 showToast("Счёт успешно создан");
@@ -1636,10 +1787,7 @@
                 btn.style.borderColor = 'transparent';
                 btn.style.transform = 'scale(1)';
             });
-            const colors = {
-                rose: 0, amber: 1, emerald: 2, sky: 3, violet: 4, pink: 5
-            };
-            const btn = document.querySelectorAll('.cat-color-btn')[colors[color]];
+            const btn = document.querySelector(`.cat-color-btn[data-color="${color}"]`);
             if (btn) {
                 btn.style.borderColor = '#ffffff';
                 btn.style.transform = 'scale(1.1)';
@@ -1734,6 +1882,12 @@
 
                 if (parsed.accounts && parsed.transactions && parsed.categories) {
                     appData = parsed;
+                    // Совместимость с иконками и кредитными статусами
+                    appData.accounts.forEach(acc => {
+                        if (!acc.icon) acc.icon = 'credit-card';
+                        if (acc.isCredit === undefined) acc.isCredit = false;
+                    });
+                    
                     saveToLocalStorage();
                     closeImportModal();
                     
